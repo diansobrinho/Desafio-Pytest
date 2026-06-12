@@ -27,9 +27,9 @@ O projeto adota uma estrutura limpa e modular, separando configurações globais
 ├── .gitignore               # Proteção contra artefatos locais (__pycache__, venv)
 ├── pytest.ini               # Sobrecarga de configurações globais do Pytest
 ├── README.md                # Documentação técnica descritiva do projeto
-└── requirements.txt         # Manifesto de dependências com versões fixadas (pinning)
+└── requirements.txt         # Manifesto de dependências com versões fixadas (pinning) 
 
-📊 Matriz de Cenários Testados
+# 📊 Matriz de Cenários Testados
 A suíte cobre exaustivamente o ciclo CRUD do endpoint /usuarios, totalizando 13 cenários de teste independentes:
 
 ID	Operação	Cenário de Teste	Objetivo da Validação	Status Esperado
