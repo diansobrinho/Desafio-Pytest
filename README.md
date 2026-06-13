@@ -122,3 +122,32 @@ Ideal para rotinas de smoke testing rápidos, onde o primeiro erro detectado dev
 
     ```Bash
     python -m pytest -x
+
+---
+
+## 📊 Análise de Cobertura da API
+
+A aferição de cobertura desta suíte de testes não se baseia na execução de linhas de código locais, mas sim na **cobertura de rotas e contratos da API**, conforme os princípios de testes de caixa-preta em sistemas distribuídos.
+
+### 🧮 Método de Cálculo
+A cobertura foi calculada mapeando a matriz de testes automatizados contra o total de operações e métodos HTTP expostos na documentação oficial da ServeRest:
+
+$$\text{Cobertura (\%)} = \left( \frac{\text{Operações Automatizadas}}{\text{Total de Operações da API}} \right) \times 100$$
+
+### 📈 Índice de Cobertura Atingido
+* **Total de Operações da API ServeRest:** 16
+* **Operações Cobertas pela Suíte:** 11
+* **Cobertura Total:** **68.75%** das rotas da API global.
+* **Cobertura dos Endpoints Alvos (`/usuarios`, `/login`, `/produtos`):** **100%** de cobertura das rotas propostas.
+
+### 🔍 Cenários Fora do Escopo Atual e Justificativas
+
+As seguintes operações da API não foram incluídas nesta iteração do projeto:
+
+1. **`GET /carrinhos` (Listagem de carrinhos)**
+2. **`POST /carrinhos` (Criação de carrinho)**
+3. **`GET /carrinhos/{id}` (Busca de carrinho por ID)**
+4. **`DELETE /carrinhos/concluir-compra` (Conclusão de pedido)**
+5. **`DELETE /carrinhos/cancelar-compra` (Cancelamento de pedido)**
+
+**Justificativa de Negócio/Técnica:** O endpoint `/carrinhos` foi classificado como *Out of Scope* (Fora de Escopo) no planejamento inicial. Por se tratar de um fluxo downstream que depende diretamente da composição lógica estável de usuários autenticados e produtos cadastrados, optou-se por consolidar a arquitetura base do framework de testes e a esteira de dados (Fixtures complexas de Token e payloads dinâmicos do Faker) antes de avançar para cenários de persistência de estado concorrente e regras transacionais de e-commerce.
